@@ -14,6 +14,11 @@ while getopts ":s:d:" option; do
 	esac
 done
 
-cp $s $d
+# the directory has to include th current date
+new_d="$d$( date +%F )/"
+echo "$new_d"
+
+mkdir -p $new_d
+cp $s $new_d
 
 exit 0
