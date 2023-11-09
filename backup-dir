@@ -1,0 +1,19 @@
+#!/bin/bash
+
+usage() { echo "This file usage:" && grep ")\ #" $0; exit 0; }
+[ $# -eq 0 ] && usage
+
+while getopts ":s:d:" option; do
+	case $option in
+		s) # file you need to backup - source
+		s=${OPTARG};;
+		d) # destination for the file
+		d=${OPTARG};;
+		*) # other option
+		usage;;
+	esac
+done
+
+cp $s $d
+
+exit 0
